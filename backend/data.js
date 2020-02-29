@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 // Database schema for the 'duck-feeds' cluster
 const DataSchema = new Schema({
         timeOfFeed: {
-                type: Date,
+                type: String, //Date
                 required: [true, 'Please enter the time you fed the ducks.']
         },
         foodFed: {
@@ -16,16 +16,16 @@ const DataSchema = new Schema({
                 required: [true, 'Please enter the location you fed the ducks']
         },
         numberOfDucksFed: {
-                type: Number,
+                type: String, //Number
                 required: [true, 'Please enter the approximate number of ducks you fed'],
-                min: [1, 'You need to have fed at least one duck to submit data.'],
-                max: [1000, 'There are not this many ducks in the park.']
+                // min: [1, 'You need to have fed at least one duck to submit data.'],
+                // max: [1000, 'There are not this many ducks in the park.']
         },
         amountFedToDucks: {
-                type: Number,
+                type: String, //Number
                 required: [true, 'Please enter the approximate amount of food you fed to the ducks in grams'],
-                min: [1, 'You need to have fed at least one gram of food to submit data'],
-                max: [1000000, 'It is impossible to feed the ducks this much. Ensure you are using grams.']
+                // min: [1, 'You need to have fed at least one gram of food to submit data'],
+                // max: [1000000, 'It is impossible to feed the ducks this much. Ensure you are using grams.']
 
         }
     },

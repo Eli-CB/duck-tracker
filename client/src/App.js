@@ -10,27 +10,15 @@ class App extends Component {
     // Initialize state
     state = {
         data: [],
-        timeOfFeed: null,
-        foodFed: null,
-        locationFed: null,
-        numberOfDucksFed: 0,
-        amountFedToDucks: 0,
-    };
-
-    // Get data from DB
-    getDataFromDb = () => {
-        fetch('http://localhost:3001/api/getData')
-            .then((data) => data.json())
-            .then((res) => this.setState({ data: res.data }));
+        timeFed: null,
+        foodType: null,
+        locationDucks: null,
+        numDucks: null,
+        numGrams: null,
     };
 
     // Add data to DB
     putDataToDB = (timeFed, foodType, locationDucks, numDucks, numGrams) => {
-        let currentIds = this.state.data.map((data) => data.id);
-        let idToBeAdded = 0;
-        while (currentIds.includes(idToBeAdded)) {
-            ++idToBeAdded;
-        }
 
         axios.post('http://localhost:3001/api/putData', {
             timeOfFeed: timeFed,
@@ -43,7 +31,7 @@ class App extends Component {
 
     // UI
     render() {
-        const { data } = this.state;
+        //const { data } = this.state;
 
         return(
 
@@ -58,25 +46,53 @@ class App extends Component {
                 <Form>
                     <Form.Group controlId="formDuckFeed">
                         <Form.Label>Time of Feed</Form.Label>
-                        <Form.Control type="text" placeholder="Enter the time and day you fed the ducks"/>
+                        <Form.Control
+                            type="text"
+                            placeholder="Enter the time and day you fed the ducks"
+                            onChange={(e) => this.setState({ timeFed: e.target.value })}
+                            required
+                        />
                     </Form.Group>
                     <Form.Group controlId="formFoodFed">
                         <Form.Label>Food Fed</Form.Label>
-                        <Form.Control type="text" placeholder="Enter the food you fed the ducks"/>
+                        <Form.Control type="text"
+                                      placeholder="Enter the food you fed the ducks"
+                                      onChange={(e) => this.setState({ foodType: e.target.value })}
+                                      required
+                        />
                     </Form.Group>
                     <Form.Group controlId="formLocationFed">
                         <Form.Label>Location Fed</Form.Label>
-                        <Form.Control type="text" placeholder="Enter the location you fed the ducks"/>
+                        <Form.Control type="text"
+                                      placeholder="Enter the location you fed the ducks"
+                                      onChange={(e) => this.setState({ locationDucks: e.target.value })}
+                                      required
+                        />
                     </Form.Group>
                     <Form.Group controlId="formNumDucks">
                         <Form.Label>Number of Ducks Fed</Form.Label>
-                        <Form.Control type="text" placeholder="Enter the number of ducks you fed"/>
+                        <Form.Control type="text"
+                                      placeholder="Enter the number of ducks you fed"
+                                      onChange={(e) => this.setState({ numDucks: e.target.value })}
+                                      required
+                        />
                     </Form.Group>
                     <Form.Group controlId="formAmountFed">
                         <Form.Label>Amount Fed to Ducks</Form.Label>
-                        <Form.Control type="text" placeholder="Enter the amount of food you fed the ducks"/>
+                        <Form.Control type="text"
+                                      placeholder="Enter the amount of food you fed the ducks in grams"
+                                      onChange={(e) => this.setState({ numGrams: e.target.value })}
+                                      required
+                        />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary"
+                            onClick={() => this.putDataToDB(
+                                this.state.timeFed,
+                                this.state.foodType,
+                                this.state.locationDucks,
+                                this.state.numDucks,
+                                this.state.numGrams,
+                            )}>
                         Submit
                     </Button>
                 </Form>
