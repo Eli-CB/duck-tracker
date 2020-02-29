@@ -3,14 +3,13 @@ import NavBar from './components/NavBar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import DateTimePicker from 'react-datetime-picker';
-
 import axios from 'axios';
 
 class App extends Component {
     // Initialize state
     state = {
         data: [],
-        timeFed: null,
+        timeFed: new Date(),
         foodType: null,
         locationDucks: null,
         numDucks: null,
@@ -29,9 +28,11 @@ class App extends Component {
         });
     };
 
+    onDateChange = timeFed => this.setState({ timeFed })
+
     // UI
     render() {
-        //const { data } = this.state;
+        const { timeFed } = this.state;
 
         return(
 
@@ -44,14 +45,14 @@ class App extends Component {
                 />
                 <NavBar/>
                 <Form>
-                    <Form.Group controlId="formDuckFeed">
+                    <Form.Group controlId="formTimeFed">
                         <Form.Label>Time of Feed</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder="Enter the time and day you fed the ducks"
-                            onChange={(e) => this.setState({ timeFed: e.target.value })}
-                            required
-                        />
+                        <br/>
+                            <DateTimePicker
+                                onChange={this.onDateChange}
+                                value={timeFed}
+                            />
+                        <br/>
                     </Form.Group>
                     <Form.Group controlId="formFoodFed">
                         <Form.Label>Food Fed</Form.Label>
@@ -71,7 +72,7 @@ class App extends Component {
                     </Form.Group>
                     <Form.Group controlId="formNumDucks">
                         <Form.Label>Number of Ducks Fed</Form.Label>
-                        <Form.Control type="text"
+                        <Form.Control type="number"
                                       placeholder="Enter the number of ducks you fed"
                                       onChange={(e) => this.setState({ numDucks: e.target.value })}
                                       required
@@ -79,7 +80,7 @@ class App extends Component {
                     </Form.Group>
                     <Form.Group controlId="formAmountFed">
                         <Form.Label>Amount Fed to Ducks</Form.Label>
-                        <Form.Control type="text"
+                        <Form.Control type="number"
                                       placeholder="Enter the amount of food you fed the ducks in grams"
                                       onChange={(e) => this.setState({ numGrams: e.target.value })}
                                       required
