@@ -1,7 +1,7 @@
 {
   "name": "duck-tracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "This app lets park-goers fill out essential data for a scientist to use to track how ducks are being fed in the park.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,8 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/Eli-CB/duck-tracker.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "heroku"
+  ],
+  "author": "Eli Brooks",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Eli-CB/duck-tracker/issues"
@@ -20,5 +22,8 @@
   "homepage": "https://github.com/Eli-CB/duck-tracker#readme",
   "dependencies": {
     "concurrently": "^5.1.0"
+  },
+  "engines": {
+    "node": "10.16.0"
   }
 }
