@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Database schema for the 'duck-feeds' cluster
-const DataSchema = new Schema({
+const DuckData = new Schema({
         timeOfFeed: {
                 type: Date,
                 required: true,
@@ -32,4 +32,4 @@ const DataSchema = new Schema({
 );
 
 // export the new Schema so we could modify it using Node.js
-module.exports = mongoose.model("Data", DataSchema);
+module.exports = mongoose.model("data", DuckData);

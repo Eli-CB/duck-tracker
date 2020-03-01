@@ -3,6 +3,8 @@ import NavBar from './components/NavBar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import DateTimePicker from 'react-datetime-picker';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import DataDisplay from './pages/duckdata';
 import axios from 'axios';
 
 class App extends Component {
@@ -25,10 +27,12 @@ class App extends Component {
             locationFed: locationDucks,
             numberOfDucksFed: numDucks,
             amountFedToDucks: numGrams
+        }).then(function (response) {
+            console.log(response);
         });
     };
 
-    onDateChange = timeFed => this.setState({ timeFed })
+    onDateChange = timeFed => this.setState({ timeFed });
 
     // UI
     render() {
@@ -43,7 +47,12 @@ class App extends Component {
                     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
                     crossOrigin="anonymous"
                 />
-                <NavBar/>
+                <Router>
+                    <NavBar/>
+                    <Switch>
+                        <Route path="/duckdata" exact component={DataDisplay} />
+                    </Switch>
+                </Router>
                 <Form>
                     <Form.Group controlId="formTimeFed">
                         <Form.Label>Time of Feed</Form.Label>
