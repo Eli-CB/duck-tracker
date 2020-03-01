@@ -3,7 +3,7 @@ const express = require('express');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const Data = require('./data');
+const Data = require('./models/data-mdl');
 
 const API_PORT = 3001;
 const app = express();
@@ -46,6 +46,7 @@ router.post('/putData', (req, res) => {
     data.locationFed = locationFed;
     data.numberOfDucksFed = numberOfDucksFed;
     data.amountFedToDucks = amountFedToDucks;
+
     data.save((err) => {
         if (err) return res.json({ success: false, error: err });
         return res.json({ success: true });
