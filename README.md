@@ -39,7 +39,7 @@ Other features to add in the future:
  - Error messages - currently any errors thrown are just written to console, not shown to user
  - Consolidate packages - currently npm install needs to be run three times instead of once
   
-# Approximate time spent: 11 Hours
+# Approximate time spent: 13 Hours
 I wanted to challenge myself and showcase my ability to learn a new technology quickly. Mongo, Node, and Express were in my "comfort zone" but setting up a React app was new to me.
 
 # Technologies:
