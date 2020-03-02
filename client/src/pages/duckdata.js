@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import TableHeaderColumn from 'react-bootstrap-table-next';
 
-class DataDisplay extends Component {
+class DuckData extends Component {
+
     // Initialize state
     state = {
         data: [],
@@ -28,7 +29,7 @@ class DataDisplay extends Component {
     // UI for the duck data display page
     render() {
 
-        // The columns of data
+        // The columns of data for the table to display
         const columns = [{
             dataField: 'timeOfFeed',
             text: 'Time Fed'
@@ -50,12 +51,6 @@ class DataDisplay extends Component {
 
         return (
             <div>
-                <link
-                    rel="stylesheet"
-                    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-                    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-                    crossOrigin="anonymous"
-                />
                 <BootstrapTable keyField={data} data= {data} columns = {columns}>
                     <TableHeaderColumn />
                 </BootstrapTable>
@@ -64,4 +59,4 @@ class DataDisplay extends Component {
     }
 }
 
-export default DataDisplay;
+export default DuckData;
