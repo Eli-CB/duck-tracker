@@ -1,12 +1,19 @@
 # duck-tracker
 A scientist is able to crowd source how much park-goers are feeding the ducks in the park. This app lets park-goers fill out essential data for the scientist to use.
 
-# Startup guide:
-- clone the repo to a directory on your machine 
-- enter 'npm install' from the command line in that newly created directory
-- navigate to the /client and /backend folders and run 'npm install' in each folder
-- enter 'npm start'
-- notice in your web browser a tab should be open labelled "Duck Tracker"
+## Running the Application
+
+In order to run the application locally, please follow the following instructions:
+
+1. `git clone` the repository
+2. `cd` into the `duck-tracker` root directory
+3. run `npm install`
+4. `cd` into the `client` directory
+3. run `npm install`
+6. `cd` into the `backend` directory
+3. run `npm install`
+8. `cd` into the `duck-tracker` root directory
+6. run `npm start` to launch the web app
 
 # Homepage:
 ![thehome](https://user-images.githubusercontent.com/22223464/75649581-74f61700-5c08-11ea-86e4-239f5e38e673.JPG)
