@@ -40,7 +40,7 @@ class DuckForm extends Component {
         return(
 
             <div>
-                <Form>
+                <Form className="mx-3 my-2">
                     <Form.Group controlId="formTimeFed">
                         <Form.Label>Time of Feed</Form.Label>
                         <br/>
