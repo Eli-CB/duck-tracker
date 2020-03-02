@@ -5,6 +5,7 @@ import DuckData from './pages/duckdata';
 import DuckForm from './pages/duckform';
 import HomePage from './pages/homepage';
 
+// Contains basic page requirements
 class App extends Component {
 
     render() {
@@ -26,9 +27,7 @@ class App extends Component {
                         <Route path="/duckdata" exact component={DuckData} />
                     </Switch>
                 </Router>
-
             </div>
-
         )
     }
 }

@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import DateTimePicker from 'react-datetime-picker';
 import axios from 'axios';
 
+// Form to submit duck data '/duckform'
 class DuckForm extends Component {
 
     // Initialize state
@@ -18,22 +19,22 @@ class DuckForm extends Component {
 
     // Add data to DB
     putDataToDB = (timeFed, foodType, locationDucks, numDucks, numGrams) => {
-
         axios.post('http://localhost:3001/api/putData', {
-            timeOfFeed: timeFed,
+            timeOfFeed: timeFed.toLocaleString(),
             foodFed: foodType,
             locationFed: locationDucks,
             numberOfDucksFed: numDucks,
             amountFedToDucks: numGrams
-        }).then(function (response) {
-            console.log(response);
-        });
+        })
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
     };
 
     onDateChange = timeFed => this.setState({ timeFed });
 
-    // UI
+    // UI for the form
     render() {
+
         const { timeFed } = this.state;
 
         return(
@@ -81,19 +82,21 @@ class DuckForm extends Component {
                                       required
                         />
                     </Form.Group>
-                    <Button variant="primary"
-                            onClick={() => this.putDataToDB(
-                                this.state.timeFed,
-                                this.state.foodType,
-                                this.state.locationDucks,
-                                this.state.numDucks,
-                                this.state.numGrams,
-                            )}>
+                    <Button
+                        variant="primary"
+                        onClick={() => this.putDataToDB(
+                            this.state.timeFed,
+                            this.state.foodType,
+                            this.state.locationDucks,
+                            this.state.numDucks,
+                            this.state.numGrams,
+                        )}
+                        href="/duckdata"
+                    >
                         Submit
                     </Button>
                 </Form>
             </div>
-
         )
     }
 }

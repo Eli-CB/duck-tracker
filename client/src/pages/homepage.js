@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from "react-bootstrap/Button";
 
+// Homepage for the app with simple greeting '/'
 class HomePage extends Component {
 
     render() {
@@ -21,8 +22,6 @@ class HomePage extends Component {
                     </p>
                 </Jumbotron>
             </div>
-
-
         )
     }
 }
