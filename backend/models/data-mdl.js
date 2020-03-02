@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 // Database schema for the 'duck-feeds' cluster
 const DuckData = new Schema({
         timeOfFeed: {
-                type: Date,
+                type: String,
                 required: true,
         },
         foodFed: {

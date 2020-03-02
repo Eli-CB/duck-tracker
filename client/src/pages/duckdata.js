@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
-import TableHeaderColumn from 'react-bootstrap-table-next';
+import ToolkitProvider, { CSVExport } from 'react-bootstrap-table2-toolkit';
 
-class DataDisplay extends Component {
+// Table display of current duck data '/duckdata'
+class DuckData extends Component {
+
     // Initialize state
     state = {
         data: [],
-        timeFed: new Date(),
-        foodType: null,
-        locationDucks: null,
-        numDucks: null,
-        numGrams: null,
     };
 
     // Retrieves data from the DB
     getDataFromDb = () => {
         fetch('http://localhost:3001/api/getData')
             .then((data) => data.json())
-            .then((res) => this.setState({ data: res.data }));
+            .then((res) => this.setState({ data: res.data }))
+            .catch((err) => console.log("Error retrieving DB data: " + err));
     };
 
     // Call getDataFromDB once per page load
@@ -27,10 +25,12 @@ class DataDisplay extends Component {
 
     // UI for the duck data display page
     render() {
+        const { ExportCSVButton } = CSVExport;
 
-        // The columns of data
+        // The columns of data for the table to display
         const columns = [{
             dataField: 'timeOfFeed',
+
             text: 'Time Fed'
         }, {
             dataField: 'foodFed',
@@ -49,19 +49,28 @@ class DataDisplay extends Component {
         const { data } = this.state;
 
         return (
+
             <div>
-                <link
-                    rel="stylesheet"
-                    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-                    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-                    crossOrigin="anonymous"
-                />
-                <BootstrapTable keyField={data} data= {data} columns = {columns}>
-                    <TableHeaderColumn />
-                </BootstrapTable>
+                <ToolkitProvider
+                    keyField={data}
+                    data={data}
+                    columns={columns}
+                    exportCSV
+                    hover
+                >
+                    {
+                        props => (
+                            <div>
+                                <BootstrapTable { ...props.baseProps } hover />
+                                <hr />
+                                <ExportCSVButton { ...props.csvProps }>Export as CSV</ExportCSVButton>
+                            </div>
+                        )
+                    }
+                </ToolkitProvider>
             </div>
         )
     }
 }
 
-export default DataDisplay;
+export default DuckData;
